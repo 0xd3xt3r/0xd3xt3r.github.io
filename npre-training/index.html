@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>Reverse-Engineering and Fuzzing a Custom Network Protocol - Tainted Bits</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Tainted Bits"><meta name="msapplication-TileImage" content="/images/logo-header.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Tainted Bits"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="#Overview The communication protocol deﬁnes the format and semantics of message exchange between applications. In modern times there are a myriad of proprietary application protocols like Skype Protoc"><meta property="og:type" content="website"><meta property="og:title" content="Reverse-Engineering and Fuzzing a Custom Network Protocol"><meta property="og:url" content="https://www.taintedbits.com/npre-training/index.html"><meta property="og:site_name" content="Tainted Bits"><meta property="og:description" content="#Overview The communication protocol deﬁnes the format and semantics of message exchange between applications. In modern times there are a myriad of proprietary application protocols like Skype Protoc"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://www.taintedbits.com/img/og_image.png"><meta property="article:published_time" content="2024-09-20T12:20:09.000Z"><meta property="article:modified_time" content="2024-09-20T12:34:08.699Z"><meta property="article:author" content="D3xt3r"><meta property="article:tag" content="malware analysis, reverse engineering, information security, computer security, exploitation"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://www.taintedbits.com/img/og_image.png"><meta property="twitter:creator" content="@0xd3xt3r"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.taintedbits.com/npre-training/index.html"},"headline":"Reverse-Engineering and Fuzzing a Custom Network Protocol","image":["https://www.taintedbits.com/img/og_image.png"],"datePublished":"2024-09-20T12:20:09.000Z","dateModified":"2024-09-20T12:34:08.699Z","author":{"@type":"Person","name":"D3xt3r"},"publisher":{"@type":"Organization","name":"Tainted Bits","logo":{"@type":"ImageObject","url":"https://www.taintedbits.com/images/logo-header.png"}},"description":"#Overview The communication protocol deﬁnes the format and semantics of message exchange between applications. In modern times there are a myriad of proprietary application protocols like Skype Protoc"}</script><link rel="alternate" href="/atom.xml" title="Tainted Bits" type="application/atom+xml"><link rel="icon" href="/images/logo-header.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/railscasts.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><!--!--><script src="https://www.googletagmanager.com/gtag/js?id=UA-128181439-1" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-128181439-1');</script><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/logo-header.png" alt="Tainted Bits" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/publications">Publication</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/0xd3xt3r"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile">Reverse-Engineering and Fuzzing a Custom Network Protocol</h1><div class="content"><h2 id="Overview"><a class="header-anchor" href="#Overview">#</a>Overview</h2>
+<p>The communication protocol deﬁnes the format and semantics of message exchange between applications. In modern times there are a myriad of proprietary application protocols like Skype Protocol, Dropbox Protocol, etc which applications use to achieve various goals like bandwidth eﬃciency, custom encryption/compression, etc. These protocols could have security vulnerabilities. Protocol Reverse Engineering (PRE) is not only useful for oﬀensive purposes but also used by modern Intrusion Detection Systems(IDS), they use the knowledge of protocol speciﬁcation to do Deep Packet Inspection(DPI) which can enhance its capabilities, where it earlier relied just based on pattern matching which may produce lots of false positives. Custom protocols are not only used by legitimate applications but also by malware and botnets like Zeus, Emotet, etc. By reversing malware protocol you can connect to malware servers and track their campaigns.</p>
+<p>Protocol Reverse Engineering(PRE) is an art and science of recovering the protocol speciﬁcation of the obscure/proprietary protocol whose documentation is unavailable or poorly documented. There are eﬀorts to develop automated PRE tools but they are largely academic and are not mature enough to be usable, and can’t give the accuracy a human analyst can oﬀer. Automated tools face the challenges of heterogeneous protocol data which is often a mixture of text and binary, and it has diﬀerent data types and variable-length ﬁelds and this is the reason I have created this training, it is to help you understand these challenges and learn to recover protocol speciﬁcation.</p>
+<p>This training is divided into two parts, in the ﬁrst part we will learn about Protocol Reverse Engineering principles. We will look at some of the common data formats and other protocol structures and with that understanding we will write a protocol dissector using Scapy framework for a target Desktop game Minetest (open source implementation of Minecraft). Minetest is online multiplayer game in which diﬀerent players can connect to the server and play with other players, there are also many public servers which you can connect and play. Once we have written the decoder we will sniﬀ the connection and look at the communication ﬂow between the client and the server which we will capture and re-analyze the traﬃc to improve the dissector further, using this newly improved dissector we will implement a custom game client/bot which will connect to the server and play as a Bot player.</p>
+<p>In the second part, with a decent understanding of the Minetest Protocol we will move on to the oﬀensive side of the training and try to fuzz the game server to ﬁnd some security vulnerabilities, we will start with basic Fuzzer and try to do incremental improvement such that we have good code coverage. Leveraging their reverse-engineered understanding of the protocol, participants will employ Generational Fuzzing by defining the protocol specification in the Boofuzz fuzzing framework and subsequently fuzzing the application. The training will also explore Mutation Fuzzing as an alternative approach to identify potential crashes or vulnerabilities.</p>
+<p>This hands-on game hacking training is a takes project-based learning approach, ensuring a comprehensive and practical understanding of Protocol Reverse Engineering. In summary, this training aims to equip you with the knowledge and skills to reverse engineer and understand obscure protocols, enhance IDS capabilities, and explore oﬀensive techniques such as protocol fuzzing to uncover potential security weaknesses. The ultimate goal is to empower participants to create their own tools in the realm of protocol security.</p>
+<h2 id="Why-should-you-take-this-course"><a class="header-anchor" href="#Why-should-you-take-this-course">#</a>Why should you take this course?</h2>
+<ol>
+<li>Understand the structure of the requests and response especially useful for a malware analyst.</li>
+<li>Construction of protocol decoders useful for writing gaming clients or to add support for a third-party proprietary product.</li>
+<li>Reverse engineer communication of online games like MMORPG which can help you do security testing of multi-player online games.</li>
+<li>Create Network signatures for malware communication that can be integrated with IDS and IPS, understanding the protocol specification can help you to do deep packet inspection.</li>
+<li>Write a protocol fuzzer to feed the remote server with crafted randomness in the data to crash the data processing part of the application with the intent of finding security vulnerabilities.</li>
+<li>Identify security vulnerabilities in protocol implementation like authentication bypass, replay attack, information disclosure, DOS, RCE etc. PRE can also help you to do deeper black-box testing of the application.</li>
+<li>Build a protocol specification for a vaguely/undocumented protocol.</li>
+<li>Audit the privacy and security of an application running on your phone/computer by looking at what data is it exporting.</li>
+</ol>
+<h2 id="Who-should-take-this-course"><a class="header-anchor" href="#Who-should-take-this-course">#</a>Who should take this course?</h2>
+<ol>
+<li>DFIR practitioner - to investigation malicious activity in the network</li>
+<li>Reverse Engineer - write a custom client that fully replicates the existing client software/game.</li>
+<li>Bug Hunter - Write protocol fuzzer for Black Box testing for application processing remote data, for example, lots of IoT Devices use custom protocol for efficient communication.</li>
+<li>Malware Analyst - To decode C&amp;C server commands and the data which is exfiltrated</li>
+<li>Threat Hunting - write network signatures for new emerging APT threats or it could be an intruder in your network, this course will help you decode network and analyze network traffic.</li>
+<li>Developers - who don’t have access to source code or protocol documentation, it usually happens when you are dealing with a legacy system which is too old and the company cannot find any documentation and you intend to migrate the system to new technology.</li>
+<li>While debugging software over the network, writing a protocol dissector can help you to get a deeper understanding of network communication done by your software.</li>
+<li>Helps you to do network debugging/diagnostics of application layer data.</li>
+<li>It helps you understand what is really transmitted over the network.</li>
+<li>RED Team - take advantage of what the Security Operation Center (SOC) doesn’t know. Look for data leaks, do attacks like inject, replay and spoofing.</li>
+<li>Vulnerability Researcher/Exploit Developer - this will also help exploit developer and vulnerability research to reproduce remote vulnerability and find zero-day bugs.</li>
+</ol>
+<h2 id="Course-Outline"><a class="header-anchor" href="#Course-Outline">#</a>Course Outline</h2>
+<ol>
+<li>Networking Basics</li>
+<li>Capturing Network Traffic
+<ol>
+<li>Passive analysis</li>
+<li>Active analysis</li>
+</ol>
+</li>
+<li>Protocol Reversing
+<ol>
+<li>Protocol Structure</li>
+<li>Protocol Flow</li>
+</ol>
+</li>
+<li>Protocol Dissector (targeting Minetest game)
+<ol>
+<li>Scapy 101</li>
+<li>Implementing protocol dissector in scapy for Minetent game.
+<ol>
+<li>Protocol decoding TLV format</li>
+<li>Packet decompression</li>
+<li>Packet Reassembly</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Custom Client (Bot Player for Minetest Game)
+<ol>
+<li>Brief Understanding of Application</li>
+<li>Authenticate the client</li>
+<li>Establish a valid session</li>
+<li>Some game hacks like making the player fly</li>
+<li>Create A Bot Army (if time permits)</li>
+</ol>
+</li>
+<li>Protocol Fuzzing (targeting Minetest game)
+<ol>
+<li>What is fuzzing?</li>
+<li>Implement Mutation Fuzzer</li>
+<li>Implement Dumb Fuzzer</li>
+<li>Implement Generation Fuzzing (Protocol Aware Fuzzing)</li>
+<li>Vulnerability Triaging (Harness)</li>
+</ol>
+</li>
+</ol>
+<h2 id="Tools-of-the-Trade"><a class="header-anchor" href="#Tools-of-the-Trade">#</a>Tools of the Trade</h2>
+<p>Below are some of the tools that you will learn in this training that will make you Protocol Reversing experience more fun.</p>
+<ol>
+<li>Protocol Reversing tools
+<ol>
+<li>Wireshark</li>
+<li>Scapy</li>
+<li>strace</li>
+</ol>
+</li>
+<li>Protocol Fuzzing Tool
+<ol>
+<li>Boofuzz (Sulley) fuzzing framework</li>
+</ol>
+</li>
+</ol>
+<h2 id="Prerequisite"><a class="header-anchor" href="#Prerequisite">#</a>Prerequisite</h2>
+<ol>
+<li>Knowledge of security concepts</li>
+<li>Basic understanding of networking concepts</li>
+<li>Knowledge of Linux OS</li>
+<li>Basic Python programming language</li>
+</ol>
+<h2 id="What-attendees-should-bring"><a class="header-anchor" href="#What-attendees-should-bring">#</a>What attendees should bring</h2>
+<ol>
+<li>Laptop with at least 50 GB free space</li>
+<li>8+ GB minimum RAM (4+GB for the VM)</li>
+<li>Administrative privileges on the system</li>
+<li>Virtualization software – Latest VirtualBox (including Virtualbox extension pack)</li>
+<li>Virtualization (Vx-t) option enabled in the BIOS settings for VirtualBox to work</li>
+</ol>
+<h2 id="What-attendees-will-be-provided-with"><a class="header-anchor" href="#What-attendees-will-be-provided-with">#</a>What attendees will be provided with</h2>
+<ol>
+<li>Virtual Machine with all the needed software pre-installed.</li>
+<li>Training Material/slides.</li>
+<li>Lab Manual</li>
+</ol>
+<h2 id="What-to-expect"><a class="header-anchor" href="#What-to-expect">#</a>What to expect</h2>
+<ol>
+<li>Hands-on Labs</li>
+<li>The joy of Reverse Engineer (looking under the hood)</li>
+<li>Getting familiar with Network Protocol Analysis</li>
+<li>Unlimited Email Support.</li>
+</ol>
+<h2 id="What-not-to-expect"><a class="header-anchor" href="#What-not-to-expect">#</a>What not to expect</h2>
+<ol>
+<li>Become a Protocol Reversing Ninja.</li>
+<li>Use the knowledge gained in this training to start exploring some Open and Close Protocol to improve your understanding of this topic. That will help you to get a deeper understanding of some underlying issues more closely.</li>
+</ol>
+<h2 id="Trainer-Bio"><a class="header-anchor" href="#Trainer-Bio">#</a>Trainer - Bio</h2>
+<p>Munawwar Hussain Shelia is employed as a Vulnerability Researcher at Qualcomm. His primary role involves diligently searching for and resolving bugs in embedded products, as well as developing tools to automate the process of bug detection. With a background in Computer Science and software development experience, Munawwar possesses a unique perspective on product design and creation, enabling him to eﬀectively identify vulnerabilities. In 2019, he conducted the “Practical IoT Hacking” Training at Nullcon and other conferences. Additionally, Munawwar delivered a talk at the diﬀerent conferences. His areas of expertise include Reverse Engineering, Binary Analysis, Malware Analysis, and Software Exploitation, topics on which he frequently shares insights through his blog, <a target="_blank" rel="noopener" href="https://taintedbits.com">https://taintedbits.com</a>. Munawwar has conducted training sessions for various governmental and private organizations worldwide. Notably, he has discovered and reported vulnerabilities in IoT devices and published a paper on Android Malware.</p>
+<h2 id="Training-History"><a class="header-anchor" href="#Training-History">#</a>Training History</h2>
+<p>This training has been delivered in various conferences</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blueteamcon.com/directory/reverse-engineering-and-fuzzing-custom-network-protocol/">Reverse-Engineering and Fuzzing Custom Network Protocol - Blueteam Con 2024</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.archive.org/web/20230628082912/https://nullcon.net/goa-2023/training/reverse-engineering-and-fuzzing-protocol/">Reverse-Engineering and Fuzzing Custom Network Protocol - Nullcon Goa 2023</a></li>
+<li>Reverse-Engineering and Fuzzing Custom Network Protocol - Nullcon Goa 2020</li>
+</ol>
+<h2 id="Conference-Talks-Workshops"><a class="header-anchor" href="#Conference-Talks-Workshops">#</a>Conference Talks &amp; Workshops</h2>
+<p>Below are some of the conference talks and workshops which I delivery in the past.</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://bsidesdelhi.in/speakers.php">Firmware Reverse Engineering - a Pragmatic Approach (Besides Delhi, 2020)</a></li>
+<li><a target="_blank" rel="noopener" href="https://india.c0c0n.org/2020/agenda">Reverse Engineering Bare-Metal IoT Firmwares - Moving beyond Linux (c0c0n Conference, 2020) </a></li>
+<li><a target="_blank" rel="noopener" href="https://web.archive.org/web/20201203003925/https://nullcon.net/website/goa-2020/training/practical-iot-hacking.php">Practical IoT Hacking Training, Nullcon Goa 2020</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.checkpoint.com/cpx/asia/">IoT Hacking workshop (1-Day, CPX 360)</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.archive.org/web/20211016153622/https://cyberweek.ae/2020/writing-bare-metal-arm-shellcode/">HITB Lab - Writing Bare-Metal ARM Shellcode</a></li>
+</ol>
+</div><!--!--></article></div><!--!--><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://www.taintedbits.com/npre-training/index.html';
+            this.page.identifier = 'npre-training/index.html';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'taintedbits' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/images/logo-header.png" alt="D3xt3r"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">D3xt3r</p><p class="is-size-6 is-block">0xd3xt3r</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">36</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">34</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://mailchi.mp/d744c1f04904/taintedbits" target="_blank" rel="me noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/0xd3xt3r"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Twitter" href="https://twitter.com/0xd3xt3r"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Subscribe" href="https://mailchi.mp/d744c1f04904/taintedbits"><i class="fa fa-envelope-open"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Binary-Exploitation/"><span class="level-start"><span class="level-item">Binary Exploitation</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/CTF-Writeups/"><span class="level-start"><span class="level-item">CTF Writeups</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/categories/IoT/"><span class="level-start"><span class="level-item">IoT</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Machine-Learning/"><span class="level-start"><span class="level-item">Machine Learning</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Malware-Analysis/"><span class="level-start"><span class="level-item">Malware Analysis</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Miscellaneous/"><span class="level-start"><span class="level-item">Miscellaneous</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/NLP/"><span class="level-start"><span class="level-item">NLP</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Reverse-Engineering/"><span class="level-start"><span class="level-item">Reverse Engineering</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACS712/"><span class="tag">ACS712</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Arduino/"><span class="tag">Arduino</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bare-Metal/"><span class="tag">Bare-Metal</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CTF/"><span class="tag">CTF</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Chat-Bots/"><span class="tag">Chat Bots</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Classification/"><span class="tag">Classification</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Data-Wrangling/"><span class="tag">Data Wrangling</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Dev/"><span class="tag">Dev</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Dropper/"><span class="tag">Dropper</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ESP8266/"><span class="tag">ESP8266</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Editor/"><span class="tag">Editor</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Emacs/"><span class="tag">Emacs</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Exploitation/"><span class="tag">Exploitation</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GandCrab/"><span class="tag">GandCrab</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Grey-Energy/"><span class="tag">Grey Energy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Heap-Exploitation/"><span class="tag">Heap Exploitation</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Kernel-Debugging/"><span class="tag">Kernel Debugging</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">16</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux-Malware/"><span class="tag">Linux Malware</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Malware-Analysis/"><span class="tag">Malware Analysis</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ROP/"><span class="tag">ROP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Regression/"><span class="tag">Regression</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Reverse-Engineering/"><span class="tag">Reverse Engineering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Visualization/"><span class="tag">Visualization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WarGames/"><span class="tag">WarGames</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Windows-Malware/"><span class="tag">Windows Malware</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Windows-Reversing/"><span class="tag">Windows Reversing</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/glibc/"><span class="tag">glibc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript-obfuscation/"><span class="tag">javascript obfuscation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pwnable/"><span class="tag">pwnable</span><span class="tag">13</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pwnable-kr/"><span class="tag">pwnable-kr</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pwnable-tw/"><span class="tag">pwnable-tw</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/radare2/"><span class="tag">radare2</span><span class="tag">4</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-07-09T07:17:02.000Z">2023-07-09</time></p><p class="title"><a href="/2023/07/09/exploring-the-fundamentals-of-RISC-V-assembly-and-shellcode-series-part1/">Exploring the fundamentals of RISC-V: Assembly and Shellcode Series - Part 1</a></p><p class="categories"><a href="/categories/Binary-Exploitation/">Binary Exploitation</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-02-14T18:30:00.000Z">2021-02-15</time></p><p class="title"><a href="/2021/02/15/arm-architecture-webinar/">ARM Architecture and Shellcode Webinars</a></p><p class="categories"><a href="/categories/Binary-Exploitation/">Binary Exploitation</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-07-17T18:30:00.000Z">2020-07-18</time></p><p class="title"><a href="/2020/07/18/binary-exploitation-pwnable-tw-tcache-tear/">Binary Exploitation [pwnable.tw] - Tcache Tear</a></p><p class="categories"><a href="/categories/CTF-Writeups/">CTF Writeups</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-07-11T18:30:00.000Z">2020-07-12</time></p><p class="title"><a href="/2020/07/12/binary-exploitation-pwnable-tw-caov/">Binary Exploitation [pwnable.tw] - CAOV</a></p><p class="categories"><a href="/categories/CTF-Writeups/">CTF Writeups</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-07-10T18:30:00.000Z">2020-07-11</time></p><p class="title"><a href="/2020/07/11/binary-exploitation-pwnable-tw-spirited-away/">Binary Exploitation [pwnable.tw] - Spirited Away</a></p><p class="categories"><a href="/categories/CTF-Writeups/">CTF Writeups</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">July 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/02/"><span class="level-start"><span class="level-item">February 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/07/"><span class="level-start"><span class="level-item">July 2020</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/06/"><span class="level-start"><span class="level-item">June 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">May 2020</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/04/"><span class="level-start"><span class="level-item">April 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/09/"><span class="level-start"><span class="level-item">September 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/02/"><span class="level-start"><span class="level-item">February 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/12/"><span class="level-start"><span class="level-item">December 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/10/"><span class="level-start"><span class="level-item">October 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/09/"><span class="level-start"><span class="level-item">September 2018</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/08/"><span class="level-start"><span class="level-item">August 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/04/"><span class="level-start"><span class="level-item">April 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/03/"><span class="level-start"><span class="level-item">March 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/12/"><span class="level-start"><span class="level-item">December 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/10/"><span class="level-start"><span class="level-item">October 2017</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/09/"><span class="level-start"><span class="level-item">September 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/08/"><span class="level-start"><span class="level-item">August 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/07/"><span class="level-start"><span class="level-item">July 2017</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/06/"><span class="level-start"><span class="level-item">June 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/01/"><span class="level-start"><span class="level-item">January 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/logo-header.png" alt="Tainted Bits" height="28"></a><p class="is-size-7"><span>&copy; 2024 D3xt3r</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Subscribe" href="https://mailchi.mp/d744c1f04904/taintedbits"><i class="fa fa-envelope"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/0xd3xt3r"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
