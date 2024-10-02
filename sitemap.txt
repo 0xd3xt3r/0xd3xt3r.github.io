@@ -1,3 +1,4 @@
+https://www.taintedbits.com/about/index.html
 https://www.taintedbits.com/2024/09/29/hacking-strace-for-system-call-instrumentation/
 https://www.taintedbits.com/publications/index.html
 https://www.taintedbits.com/2017/08/20/when-a-chatbot-meets-arduino/
@@ -32,7 +33,6 @@ https://www.taintedbits.com/2018/09/15/decrypting-mirai-configuration-with-radar
 https://www.taintedbits.com/tags/index.html
 https://www.taintedbits.com/cve/index.html
 https://www.taintedbits.com/categories/index.html
-https://www.taintedbits.com/about/index.html
 https://www.taintedbits.com/2018/10/10/setting-up-windows-7-for-kernel-debugging/
 https://www.taintedbits.com/2017/07/31/twitter-bot-in-4-simple-steps/
 https://www.taintedbits.com/2018/12/17/unpacking-grey-energy-malware/
