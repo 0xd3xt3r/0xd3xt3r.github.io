@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/npre-training/index.html</loc>
+    <loc>https://www.taintedbits.com/publications/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/publications/index.html</loc>
+    <loc>https://www.taintedbits.com/npre-training/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -39,15 +39,6 @@
   
   <url>
     <loc>https://www.taintedbits.com/2017/08/20/when-a-chatbot-meets-arduino/</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/about/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -74,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2017/10/02/visual-text-analytics-with-python/</loc>
+    <loc>https://www.taintedbits.com/about/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -83,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2017/07/23/simple-DIY-smart-home-IOT-project/</loc>
+    <loc>https://www.taintedbits.com/2017/10/02/visual-text-analytics-with-python/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -102,6 +93,15 @@
   
   <url>
     <loc>https://www.taintedbits.com/2017/07/31/twitter-bot-in-4-simple-steps/</loc>
+    
+    <lastmod>2026-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/2017/07/23/simple-DIY-smart-home-IOT-project/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -137,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/07/18/binary-exploitation-pwnable-tw-tcache-tear/</loc>
+    <loc>https://www.taintedbits.com/2020/07/11/binary-exploitation-pwnable-tw-spirited-away/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -146,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/07/11/binary-exploitation-pwnable-tw-spirited-away/</loc>
+    <loc>https://www.taintedbits.com/2020/07/18/binary-exploitation-pwnable-tw-tcache-tear/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/05/17/binary-exploitation-pwnable-kr-level-4/</loc>
+    <loc>https://www.taintedbits.com/2020/06/06/binary-exploitation-pwnable-kr-level-5/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/06/06/binary-exploitation-pwnable-kr-level-5/</loc>
+    <loc>https://www.taintedbits.com/2020/05/17/binary-exploitation-pwnable-kr-level-4/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -245,7 +245,25 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2023/07/09/exploring-the-fundamentals-of-RISC-V-assembly-and-shellcode-series-part1/</loc>
+    <loc>https://www.taintedbits.com/2017/10/14/handling-categorical-features-in-python/</loc>
+    
+    <lastmod>2026-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/2018/10/18/gandcrab-detail-analysis-of-js-delivery-payload/</loc>
+    
+    <lastmod>2026-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/2018/04/12/lets-emacs-in-21st-century/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -272,16 +290,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2017/10/14/handling-categorical-features-in-python/</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/2018/04/12/lets-emacs-in-21st-century/</loc>
+    <loc>https://www.taintedbits.com/2020/05/07/binary-exploitation-pwnable-kr-level-1/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -299,7 +308,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/05/07/binary-exploitation-pwnable-kr-level-1/</loc>
+    <loc>https://www.taintedbits.com/2023/07/09/exploring-the-fundamentals-of-RISC-V-assembly-and-shellcode-series-part1/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -309,15 +318,6 @@
   
   <url>
     <loc>https://www.taintedbits.com/2020/05/16/binary-exploitation-pwnable-kr-level-3/</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/2018/10/18/gandcrab-detail-analysis-of-js-delivery-payload/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -362,7 +362,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2021/02/15/arm-architecture-webinar/</loc>
+    <loc>https://www.taintedbits.com/2017/01/01/control-high-voltage-device-with-arduino-and-IR-remote-control/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -371,7 +371,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2017/01/01/control-high-voltage-device-with-arduino-and-IR-remote-control/</loc>
+    <loc>https://www.taintedbits.com/2021/02/15/arm-architecture-webinar/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -407,6 +407,20 @@
 
   
   <url>
+    <loc>https://www.taintedbits.com/tags/Dropper/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/Windows-Malware/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.taintedbits.com/tags/Arduino/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -428,14 +442,21 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Dropper/</loc>
+    <loc>https://www.taintedbits.com/tags/Linux-Malware/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Windows-Malware/</loc>
+    <loc>https://www.taintedbits.com/tags/Malware-Analysis/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/radare2/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -477,6 +498,13 @@
   </url>
   
   <url>
+    <loc>https://www.taintedbits.com/tags/Python/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.taintedbits.com/tags/Control-Flow-Integrity/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -491,77 +519,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Linux-Malware/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/Malware-Analysis/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/radare2/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/Python/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.taintedbits.com/tags/Data-Wrangling/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/CTF/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/RISC-V/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/RISC-V-Shellcode/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/Tracing/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/Classification/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/Regression/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -576,6 +534,20 @@
   
   <url>
     <loc>https://www.taintedbits.com/tags/Data-Analysis/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/javascript-obfuscation/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/GandCrab/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -603,7 +575,35 @@
   </url>
   
   <url>
+    <loc>https://www.taintedbits.com/tags/Tracing/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/Classification/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/Regression/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.taintedbits.com/tags/pwnable-kr/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/CTF/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -617,14 +617,14 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/javascript-obfuscation/</loc>
+    <loc>https://www.taintedbits.com/tags/RISC-V/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/GandCrab/</loc>
+    <loc>https://www.taintedbits.com/tags/RISC-V-Shellcode/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -673,20 +673,6 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Kernel-Debugging/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/Windows-Reversing/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.taintedbits.com/tags/glibc/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -695,6 +681,13 @@
   
   <url>
     <loc>https://www.taintedbits.com/tags/Chat-Bots/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/Grey-Energy/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -715,13 +708,27 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Grey-Energy/</loc>
+    <loc>https://www.taintedbits.com/tags/Kernel-Debugging/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/Windows-Reversing/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
 
+  
+  <url>
+    <loc>https://www.taintedbits.com/categories/Malware-Analysis/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://www.taintedbits.com/categories/Programming/</loc>
@@ -731,7 +738,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/categories/Malware-Analysis/</loc>
+    <loc>https://www.taintedbits.com/categories/Reverse-Engineering/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -752,7 +759,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/categories/Reverse-Engineering/</loc>
+    <loc>https://www.taintedbits.com/categories/Programming/Data-Analysis/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -766,7 +773,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/categories/Programming/Data-Analysis/</loc>
+    <loc>https://www.taintedbits.com/categories/Software-Exploitation/CTF-Writeup/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -774,13 +781,6 @@
   
   <url>
     <loc>https://www.taintedbits.com/categories/Software-Exploitation/Hardware-Security/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/categories/Software-Exploitation/CTF-Writeup/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
