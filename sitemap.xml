@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/publications/index.html</loc>
+    <loc>https://www.taintedbits.com/tags/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/index.html</loc>
+    <loc>https://www.taintedbits.com/publications/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/cve/index.html</loc>
+    <loc>https://www.taintedbits.com/categories/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/categories/index.html</loc>
+    <loc>https://www.taintedbits.com/cve/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2017/07/31/twitter-bot-in-4-simple-steps/</loc>
+    <loc>https://www.taintedbits.com/2017/07/23/simple-DIY-smart-home-IOT-project/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2018/12/17/unpacking-grey-energy-malware/</loc>
+    <loc>https://www.taintedbits.com/2017/07/31/twitter-bot-in-4-simple-steps/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2017/07/23/simple-DIY-smart-home-IOT-project/</loc>
+    <loc>https://www.taintedbits.com/2018/12/17/unpacking-grey-energy-malware/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -137,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/07/11/binary-exploitation-pwnable-tw-spirited-away/</loc>
+    <loc>https://www.taintedbits.com/2020/07/18/binary-exploitation-pwnable-tw-tcache-tear/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -146,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/07/18/binary-exploitation-pwnable-tw-tcache-tear/</loc>
+    <loc>https://www.taintedbits.com/2020/07/11/binary-exploitation-pwnable-tw-spirited-away/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/07/04/binary-exploitation-pwnable-tw-babystack/</loc>
+    <loc>https://www.taintedbits.com/2020/06/06/binary-exploitation-pwnable-kr-level-5/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -227,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/06/06/binary-exploitation-pwnable-kr-level-5/</loc>
+    <loc>https://www.taintedbits.com/2020/07/04/binary-exploitation-pwnable-tw-babystack/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -246,15 +246,6 @@
   
   <url>
     <loc>https://www.taintedbits.com/2023/07/09/exploring-the-fundamentals-of-RISC-V-assembly-and-shellcode-series-part1/</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/2018/10/18/gandcrab-detail-analysis-of-js-delivery-payload/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -299,24 +290,6 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/2020/05/07/binary-exploitation-pwnable-kr-level-1/</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/2020/05/09/binary-exploitation-pwnable-kr-level-2/</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.taintedbits.com/2020/04/28/linux-binary-exploitation-series-with-pwnable-kr/</loc>
     
     <lastmod>2026-07-05</lastmod>
@@ -326,7 +299,34 @@
   </url>
   
   <url>
+    <loc>https://www.taintedbits.com/2020/05/07/binary-exploitation-pwnable-kr-level-1/</loc>
+    
+    <lastmod>2026-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.taintedbits.com/2020/05/16/binary-exploitation-pwnable-kr-level-3/</loc>
+    
+    <lastmod>2026-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/2018/10/18/gandcrab-detail-analysis-of-js-delivery-payload/</loc>
+    
+    <lastmod>2026-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/2020/05/09/binary-exploitation-pwnable-kr-level-2/</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -407,20 +407,6 @@
 
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Dropper/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/Windows-Malware/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.taintedbits.com/tags/Arduino/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -436,6 +422,20 @@
   
   <url>
     <loc>https://www.taintedbits.com/tags/IoT/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/Dropper/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/Windows-Malware/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -547,20 +547,6 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/javascript-obfuscation/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.taintedbits.com/tags/GandCrab/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.taintedbits.com/tags/Tracing/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -631,6 +617,20 @@
   </url>
   
   <url>
+    <loc>https://www.taintedbits.com/tags/javascript-obfuscation/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/tags/GandCrab/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.taintedbits.com/tags/Exploitation/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -652,14 +652,14 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/ROP/</loc>
+    <loc>https://www.taintedbits.com/tags/Heap-Exploitation/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Heap-Exploitation/</loc>
+    <loc>https://www.taintedbits.com/tags/ROP/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -687,13 +687,6 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Chat-Bots/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.taintedbits.com/tags/glibc/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -701,7 +694,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/tags/Grey-Energy/</loc>
+    <loc>https://www.taintedbits.com/tags/Chat-Bots/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -721,17 +714,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://www.taintedbits.com/tags/Grey-Energy/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://www.taintedbits.com/categories/Malware-Analysis/</loc>
+    <loc>https://www.taintedbits.com/categories/Programming/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/categories/Programming/</loc>
+    <loc>https://www.taintedbits.com/categories/Malware-Analysis/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -745,13 +745,6 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/categories/Reverse-Engineering/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.taintedbits.com/categories/Programming/IoT-Dev/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -759,7 +752,7 @@
   </url>
   
   <url>
-    <loc>https://www.taintedbits.com/categories/Software-Exploitation/Hardware-Security/</loc>
+    <loc>https://www.taintedbits.com/categories/Reverse-Engineering/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -774,6 +767,13 @@
   
   <url>
     <loc>https://www.taintedbits.com/categories/Programming/Data-Analysis/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.taintedbits.com/categories/Software-Exploitation/Hardware-Security/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
